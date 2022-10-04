@@ -19,7 +19,7 @@ int BuscarLibro(eLibro libros[], int tamL, int id);
 float CalcularTotalYPromedio(eLibro libros[], int tamL, float* promedio);
 int SuperanPromedio(eLibro libros[], int tamL, float promedio);
 int CantidadAnteriorFecha(eLibro libros[], int tamL);
-
+int OrdenarPorImporteYTitulo(eLibro libros[], int tamL, eAutor autores[], int tamA, eEditorial editoriales[], int tamE, ePais paises[], int tamP);
 
 
 #endif /* FUNCIONES_H_ */

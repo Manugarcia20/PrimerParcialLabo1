@@ -71,6 +71,7 @@ int AltaPasajero(eLibro libros[], int tamL, int *pId, eAutor autores[], int tamA
 				{
 					while (getStringLetras("\nIngrese un titulo: ", nuevoLibro.titulo) == -1)
 					{
+						fflush(stdin);
 						printf("\nCaracteres invalidos. Por favor, ingrese solo letras: ");
 					}
 
@@ -130,7 +131,7 @@ int ModificarLibros(eLibro libros[], int tamL , int idLibroCambio, eAutor autore
 						if (posLibroCambio != -1) //el libro existe
 								{
 
-							respuesta = getChar("\nEsta seguro de que quiere modificar al pasajero %d ? s/n ", posLibroCambio);
+							respuesta = getChar("\nEsta seguro de que quiere modificar al pasajero %d ? s/n ");
 							if (respuesta == 's') {
 
 								do{
@@ -138,7 +139,7 @@ int ModificarLibros(eLibro libros[], int tamL , int idLibroCambio, eAutor autore
 								switch(subMenu){
 								case 1:
 									printf("\nUsted eligio: MODIFICAR TITULO\n");
-									while (getStringLetras("\nIngrese un nuevo titulo: ", libros->titulo) == -1)
+									while (getStringLetras("\nIngrese un nuevo titulo: ", libros[posLibroCambio].titulo) == -1)
 									{
 										printf("\nCaracteres invalidos. Por favor, ingrese solo letras");
 									}
@@ -146,28 +147,28 @@ int ModificarLibros(eLibro libros[], int tamL , int idLibroCambio, eAutor autore
 									break;
 								case 2:
 									printf("\nUsted eligio: MODIFICAR FECHA DE PUBLICACION\n");
-									libros->fecha.dia = getValidInt("\nIngrese el nuevo dia de publicacion: " , "\nError, ingrese un numero: ",1,30);
-									libros->fecha.mes = getValidInt("\nIngrese el nuevo mes de publicacion: " , "\nError, ingrese un numero: ",1,12);
-									libros->fecha.anio = getValidInt("\nIngrese el nuevo anio de publicacion: " , "\nError, ingrese un numero: ",1800,2022);
+									libros[posLibroCambio].fecha.dia = getValidInt("\nIngrese el nuevo dia de publicacion: " , "\nError, ingrese un numero: ",1,30);
+									libros[posLibroCambio].fecha.mes = getValidInt("\nIngrese el nuevo mes de publicacion: " , "\nError, ingrese un numero: ",1,12);
+									libros[posLibroCambio].fecha.anio = getValidInt("\nIngrese el nuevo anio de publicacion: " , "\nError, ingrese un numero: ",1800,2022);
 									MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 3:
 									printf("\nUsted eligio: MODIFICAR PRECIO DEL LIBRO\n");
-									CargarPrecio(&libros->importe, "\nIngrese el nuevo precio del libro:  ", "\nError. Ingrese solo numeros");
+									CargarPrecio(&libros[posLibroCambio].importe, "\nIngrese el nuevo precio del libro:  ", "\nError. Ingrese solo numeros");
 									MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 4:
 									printf("\nUsted eligio: MODIFICAR AUTOR\n");
 									 MostrarAutor(autores,tamA,paises);
 									 nuevoAutor = getValidInt("\nIngrese el id del nuevo autor: " , "\nError, ingrese un id valido: ",1,10);
-									 libros->idAutor = nuevoAutor;
+									 libros[posLibroCambio].idAutor = nuevoAutor;
 									 MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 5:
 									printf("\nUsted eligio: MODIFICAR EDITORIAL\n");
 									 MostrarEditorial(editoriales,tamE);
 									nuevaEditorial = getValidInt("\nIngrese el id de la nueva editorial: " , "\nError, ingrese un id valido: ",1,5);
-									libros->idEditorial = nuevaEditorial;
+									libros[posLibroCambio].idEditorial = nuevaEditorial;
 									MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 6:

@@ -21,7 +21,6 @@ int CargarDescripcionPais(ePais paises[], int tamP, int id, char descPais[]){
 				break;
 			}
 		}
-
 		isOk = 1;
 	}
 		return isOk;

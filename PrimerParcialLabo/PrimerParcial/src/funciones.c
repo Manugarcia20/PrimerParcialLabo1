@@ -27,31 +27,31 @@ void CargarPrecio(float *precio, char mensaje[], char mensajeError[]) {
 
 	}
 
-int MostrarUnLibro(eLibro libro, eAutor autores[],eEditorial editoriales[], int tamL, int tamA,ePais paises[],int tamP){
+int MostrarUnLibro(eLibro libro, eAutor autores[],eEditorial editoriales[], int tamL, int tamA, ePais paises[],int tamP){
 		int isOk = 0;
 		char descAutor[20];
 		char descEditorial[20];
-		char descPais[20];
+//		char descPais[20];
 
 		if(autores != NULL && tamL > 0)
 		{
 		CargarDescripcionAutor(autores, tamL, libro.idAutor, descAutor);
-		CargarDescripcionEditorial(editoriales,tamL, libro.idEditorial,descEditorial);
-		CargarDescripcionPais(paises,tamP,paises->idPais,descPais);
+//		CargarDescripcionPais(paises,tamP,libro.,descPais);
+		CargarDescripcionEditorial(editoriales,tamL,libro.idEditorial,descEditorial);
 
-		printf("\n%d\t%s\t\t%d/%d/%d\t%.2f\t\t%s\t%s\t%s\t\n",    	 libro.idLibro,
+		printf("\n%d\t%s\t\t%d/%d/%d\t%.2f\t%s\t%s\t\n",    	 libro.idLibro,
 															 	     libro.titulo,
 																	 libro.fecha.dia,
 																	 libro.fecha.mes,
 																	 libro.fecha.anio,
 																  	 libro.importe,
 																	 descAutor,
-																	 descPais,
+//																	 descPais,
 																	 descEditorial
 																  );
 
-		isOk = 1;
 		}
+		isOk = 1;
 		return isOk;
 	}
 
@@ -65,15 +65,15 @@ int MostrarListaLibros(eLibro libros[], int tamL, eAutor autores[], int tamA, eE
 		printf("---------------------------------------------------------------------------------------------------------\n");
 		printf("\n		*** LISTA DE LIBROS ***		\n");
 		printf("--------------------------------------------------------------------------------------------------------\n");
-		printf("ID\tTITULO\tFECHA DE PUBLICACION\tPRECIO\t\tAUTOR  NACIONALIDAD\tEDITORIAL\t\n");
+		printf("ID\tTITULO\tFECHA DE PUBLICACION\tPRECIO\tAUTOR\tEDITORIAL\t\n");
 		printf("---------------------------------------------------------------------------------------------------------\n");
 
 		for (i = 0; i < tamL; i++) {
 			if (libros[i].estado == LLENO) {
-				MostrarUnLibro(libros[i],autores,editoriales,tamA, tamE,paises,tamP);
+				MostrarUnLibro(libros[i],autores,editoriales,tamA,tamE,paises,tamP);
 			}
-			isOK = 1;
 		}
+			isOK = 1;
 	}
 
 	return isOK;
@@ -143,4 +143,77 @@ int CantidadAnteriorFecha(eLibro libros[], int tamL){
 	return isOk;
 
 }
+
+int OrdenarPorImporteYTitulo(eLibro libros[], int tamL, eAutor autores[], int tamA, eEditorial editoriales[], int tamE, ePais paises[], int tamP){
+
+	   eLibro auxLibro;
+
+
+		        for(int i=0; i<tamL-1; i++)
+		        {
+		        	if(libros[i].estado == LLENO){
+
+		            for(int j=i+1; j<tamL; j++)
+		            {
+		            	   for(int i=0; i<tamL-1; i++){
+		            			            for( int j=i+1; j<tamL; j++ ){
+		            			                //       'M' > 'F'
+		            			                if( libros[i].importe < libros[j].importe ){
+		            			                    auxLibro = libros[i];
+		            			                    libros[i] = libros[j];
+		            			                    libros[j] = auxLibro;
+		            			                }
+		            			                // 'M' < 'F'  'F' == 'F'  'M' == 'M'
+		            			                else{
+		            			                    if( libros[i].importe == libros[j].importe ){
+		            			                        if( strcmp( libros[i].titulo, libros[j].titulo ) > 0 ){
+		            			                            auxLibro = libros[i];
+		            			                            libros[i] = libros[j];
+		            			                            libros[j] = auxLibro;
+		            			                        }
+		            			                    }
+		            			                }
+		            			            }
+		            			        }
+//		                //criterio+condicion de ordenamiento dentro del if > o <          importe
+//		                if(libros[i].importe < libros[j].importe)
+//		                {
+//		                    auxLibro=libros[i];
+//		                    libros[i]=libros[j];
+//		                    libros[j]=auxLibro;
+//		                }
+//		                //criterio+condicion de ordenamiento dentro del if > o <          titulo
+//		                if(libros[i].importe == libros[j].importe){
+//		                if(strcmp(libros[i].titulo,libros[j].titulo) > 0)
+//		                {
+//		                    auxLibro=libros[i];
+//		                    libros[i]=libros[j];
+//		                    libros[j]=auxLibro;
+//		                }
+//		                }
+		            }// segundo for
+		        }// validacion
+		        }// primer for
+		       MostrarListaLibros(libros,tamL,autores,tamA,editoriales,tamE,paises,tamP);
+
+		    return 0;
+
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

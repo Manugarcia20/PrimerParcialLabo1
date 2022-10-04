@@ -1,15 +1,15 @@
-02:25:19 **** Incremental Build of configuration Debug for project PrimerParcial ****
+20:12:11 **** Incremental Build of configuration Debug for project PrimerParcial ****
 make all 
-Building file: ../src/PrimerParcial.c
+Building file: ../src/funciones.c
 Invoking: GCC C Compiler
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/PrimerParcial.d" -MT"src/PrimerParcial.o" -o "src/PrimerParcial.o" "../src/PrimerParcial.c"
-Finished building: ../src/PrimerParcial.c
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/funciones.d" -MT"src/funciones.o" -o "src/funciones.o" "../src/funciones.c"
+Finished building: ../src/funciones.c
  
 Building target: PrimerParcial
 Invoking: MacOS X C Linker
 gcc  -o "PrimerParcial"  ./src/PrimerParcial.o ./src/autor.o ./src/editorial.o ./src/funciones.o ./src/input.o ./src/libro.o ./src/menu.o ./src/pais.o   
 Finished building target: PrimerParcial
  
-02:25:26 **** Incremental Build of configuration Debug for project PrimerParcial ****
+20:12:15 **** Incremental Build of configuration Debug for project PrimerParcial ****
 make all 
 make: Nothing to be done for `all'.
