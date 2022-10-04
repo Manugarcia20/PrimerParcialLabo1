@@ -1,0 +1,51 @@
+/*
+ * funciones.c
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "input.h"
+
+
+void CargarPrecio(float *precio, char mensaje[], char mensajeError[]) {
+		char auxPrecio[51];
+
+		printf("%s", mensaje);
+		scanf("%s", auxPrecio);
+
+		while (!(esNumericoFlotante(auxPrecio))) {
+			printf("%s", mensajeError);
+			scanf("%s", auxPrecio);
+		}
+
+		*precio = atof(auxPrecio);
+
+	}
+
+int MostrarUnPasajero(eLibro libro, eAutor autores[],eEditorial editoriales[], int tamL, int tamA){
+		int isOk = 0;
+		char descAutor[20];
+		char descEditorial[20];
+
+		if(autores != NULL && tamL > 0)
+		{
+		CargarDescripcionTipo(autores, tam, unPasajero.idTipo, descTipo);
+		CargarDescripcionEstado(estadoVuelo,tam, unPasajero.idEstado, descEstado);
+
+		printf("\n%d          %s %s          %.2f         %s	    %10s      %10s  \n",    unPasajero.id,
+															 	     unPasajero.nombre,
+																	 unPasajero.apellido,
+																  	 unPasajero.precio,
+																	 unPasajero.codigoVuelo,
+																	 descTipo,
+																	 descEstado
+																  );
+
+		isOk = 1;
+		}
+		return isOk;
+	}

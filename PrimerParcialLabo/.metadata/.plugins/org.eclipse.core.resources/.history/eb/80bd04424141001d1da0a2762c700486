@@ -1,0 +1,14 @@
+/*
+ * funciones.h
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#ifndef FUNCIONES_H_
+#define FUNCIONES_H_
+
+
+void CargarPrecio(float *precio, char mensaje[], char mensajeError[]);
+int MostrarUnLibro(eLibro unPasajero, eTipo tipoPasajero[],eEstadoVuelo estadoVuelo[], int tam, int tamEstado)
+#endif /* FUNCIONES_H_ */

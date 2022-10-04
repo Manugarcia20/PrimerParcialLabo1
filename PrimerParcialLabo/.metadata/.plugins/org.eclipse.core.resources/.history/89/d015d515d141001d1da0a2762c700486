@@ -1,0 +1,98 @@
+/*
+ ============================================================================
+ Name        : PrimerParcialLabo.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "menu.h"
+#include "input.h"
+#include "funciones.h"
+#include "editorial.h"
+#include "pais.h"
+#include "autor.h"
+#include "libro.h"
+
+
+
+int main(void) {
+	int opcion;
+	int pId =1;
+
+	eEditorial editoriales[TAM_E] = {
+			{1,"ATLANTIDA",VACIO},
+			{2,"ARGENTA",LLENO},
+			{3,"COLUMBA",LLENO},
+			{4,"INTA",VACIO},
+			{5,"POLAR",LLENO}
+	};
+
+	ePais paises[TAM_P] = {
+			{1,"ARGENTINA",LLENO},
+			{2,"FRANCIA",LLENO},
+			{3,"INGLATERRA",VACIO},
+			{4,"ALEMANIA",VACIO},
+			{5,"BRASIL",LLENO}
+	};
+
+	eAutor autores[TAM_A] = {
+			{1,"SHAKESPEARE",1,LLENO},
+			{2,"CERVANTES",3,LLENO},
+			{3,"CORTAZAR",4,VACIO},
+			{4,"BORGES",2,LLENO},
+			{5,"WILDE",1,VACIO},
+			{6,"KAFKA",2,VACIO},
+			{7,"VERNE",5,LLENO},
+			{8,"TOLSTOI",5,VACIO},
+			{9,"NERUDA",4,VACIO},
+			{10,"POE",3,LLENO},
+	};
+
+	eLibro libros[TAM_L];
+
+	InicializarLibros(libros,TAM_L);
+
+do{
+	opcion = menuOpciones();
+	switch(opcion){
+	case 1:
+		printf("Usted eligio: ALTA\n");
+		AltaPasajero(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E);
+		break;
+	case 2:
+		printf("Usted eligio: MODIFICACION\n");
+		break;
+	case 3:
+		printf("Usted eligio: BAJA\n");
+		break;
+	case 4:
+		printf("Usted eligio: INFORMAR\n");
+		break;
+	case 5:
+		printf("Usted eligio: LISTAR\n");
+		MostrarListaLibros(libros,TAM_L,autores, TAM_A, editoriales,TAM_E);
+		break;
+	case 6:
+		break;
+	}
+
+
+
+
+
+
+}while(opcion != 6);
+
+
+
+
+
+	return EXIT_SUCCESS;
+}

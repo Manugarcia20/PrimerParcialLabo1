@@ -1,0 +1,101 @@
+/*
+ ============================================================================
+ Name        : PrimerParcialLabo.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "menu.h"
+#include "input.h"
+#include "funciones.h"
+#include "editorial.h"
+#include "pais.h"
+#include "autor.h"
+#include "libro.h"
+
+
+
+int main(void) {
+	int opcion;
+	int pId =1;
+	int idLibroCambio =0;
+
+	eEditorial editoriales[TAM_E] = {
+			{1,"ATLANTIDA",LLENO},
+			{2,"ARGENTA",LLENO},
+			{3,"COLUMBA",LLENO},
+			{4,"INTA",LLENO},
+			{5,"POLAR",LLENO}
+	};
+
+	ePais paises[TAM_P] = {
+			{1,"ARGENTINA",LLENO},
+			{2,"FRANCIA",LLENO},
+			{3,"INGLATERRA",LLENO},
+			{4,"ALEMANIA",LLENO},
+			{5,"ESPANA",LLENO}
+	};
+
+	eAutor autores[TAM_A] = {
+			{1,"SHAKESPEARE",3,LLENO},
+			{2,"CERVANTES",5,LLENO},
+			{3,"CORTAZAR",1,LLENO},
+			{4,"BORGES",1,LLENO},
+			{5,"WILDE",3,LLENO},
+			{6,"KAFKA",4,LLENO},
+			{7,"VERNE",5,LLENO},
+			{8,"TOLSTOI",5,LLENO},
+			{9,"NERUDA",1,LLENO},
+			{10,"POE",3,LLENO},
+	};
+
+	eLibro libros[TAM_L];
+
+	InicializarLibros(libros,TAM_L);
+
+do{
+	opcion = menuOpciones();
+	switch(opcion){
+	case 1:
+		printf("\nUsted eligio: ALTA\n");
+		AltaPasajero(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E);
+		break;
+	case 2:
+		printf("\nUsted eligio: MODIFICACION\n");
+		ModificarLibros(libros, TAM_L , idLibroCambio, autores, TAM_A,editoriales,TAM_E, paises, TAM_P);
+		break;
+	case 3:
+		printf("\nUsted eligio: BAJA\n");
+		break;
+	case 4:
+		printf("\nUsted eligio: INFORMAR\n");
+		CalcularPromedio(&importe,&cantImporte,promedio);
+		break;
+	case 5:
+		printf("\nUsted eligio: LISTAR\n");
+		MostrarListaLibros(libros,TAM_L,autores, TAM_A, editoriales,TAM_E,paises, TAM_P);
+		break;
+	case 6:
+		break;
+	}
+
+
+
+
+
+
+}while(opcion != 6);
+
+
+
+
+
+	return EXIT_SUCCESS;
+}

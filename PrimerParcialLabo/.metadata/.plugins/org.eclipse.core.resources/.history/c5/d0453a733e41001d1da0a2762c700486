@@ -1,0 +1,16 @@
+/*
+ * editorial.c
+ *
+ *  Created on: 30 sep. 2022
+ *      Author: manu
+ */
+
+#include "editorial.h"
+
+void MostrarEditorial(eEditorial editoriales[], int tamE){
+	 for(int i=0; i<tamE; i++)
+	{
+	printf("%d %s\n",editoriales[i].idEditorial,editoriales[i].descEditorial);
+	}
+
+}

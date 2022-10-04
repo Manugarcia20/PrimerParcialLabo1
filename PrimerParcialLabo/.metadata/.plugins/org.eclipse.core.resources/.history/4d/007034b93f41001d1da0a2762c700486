@@ -1,0 +1,125 @@
+/*
+ * libro.c
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#include "libro.h"
+#include "input.h"
+#include "editorial.h"
+#include "autor.h"
+
+int InicializarLibros(eLibro libros[], int tam){
+	int i;
+	int isOK = -1;
+	if (libros != NULL && tam > 0) {
+		for (i = 0; i < tam; i++) {
+			libros[i].estado = VACIO;
+			isOK = 0;
+		}
+	}
+	return isOK;
+
+
+}
+int BuscarEspacioLibre(eLibro libros[], int tam, int *pPosicion){
+	int isOk = 0;
+
+		if(libros != NULL && tam > 0 && pPosicion != NULL)
+		{
+			*pPosicion = -1;
+			for(int i = 0; i < tam; i++)
+			{
+				if(libros[i].estado == 0)
+				{
+					*pPosicion = i;
+					break;
+				}
+			}
+			isOk = 1;
+
+		}
+		return isOk;
+
+}
+
+int AltaPasajero(eLibro libros[], int tamL, int *pId, eAutor autores[], int tamA, ePais paises[], int tamP, eEditorial editoriales[], int tamE){
+
+	int isOk = 0;
+		int posicion;
+		int idAutor;
+		int idEditorial;
+
+		eLibro nuevoLibro;
+
+
+		if (libros != NULL && tamL > 0 && pId != NULL) {
+
+
+			if (BuscarEspacioLibre(libros, tamL, &posicion)) {
+
+				if (posicion == -1)
+				{
+					printf("\nNo hay lugar en el sistema");
+
+				}
+				else
+				{
+					while (getStringLetras("\nIngrese un nombre: ", nuevoLibro.titulo) == -1)
+					{
+						printf("\nCaracteres invalidos. Por favor, ingrese solo letras: ");
+					}
+
+					nuevoLibro.fecha.dia = getValidInt("\nIngrese el dia de publicacion del libro: ","Error. Ingrese solo numeros: ",1,30);
+					nuevoLibro.fecha.mes = getValidInt("\nIngrese el mes de publicacion del libro: ","Error. Ingrese solo numeros: ",1,12);
+					nuevoLibro.fecha.anio = getValidInt("\nIngrese el anio de publicacion del libro: ","Error. Ingrese solo numeros: ",1700,2022);
+				    CargarPrecio(&nuevoLibro.importe, "\nIngrese el precio del libro :  ", "\nError. Ingrese solo numeros: ");
+
+				    printf("\n\n");
+
+				    MostrarAutor(autores,tamA,paises);
+				    idAutor = getValidInt("\nIngrese el autor del libro: ", "\nError, ingrese un tipo correcto: ", 1, 10);
+				    nuevoLibro.idAutor = idAutor;
+
+				    printf("\n\n");
+				    MostrarEditorial(editoriales,tamE);
+				   	idEditorial = getValidInt("\nIngrese la editorial del libro: ", "\nError, ingrese un tipo correcto: ", 1, 5);
+				   	nuevoLibro.idEditorial = idEditorial;
+
+					nuevoLibro.estado = LLENO;
+					nuevoLibro.idLibro = *pId;
+					(*pId)++;
+
+					libros[posicion] = nuevoLibro;
+					isOk = 1;
+
+				}
+
+			}
+		}
+
+			return isOk;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

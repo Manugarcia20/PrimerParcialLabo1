@@ -1,0 +1,27 @@
+/*
+ * funciones.c
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "input.h"
+
+
+void CargarPrecio(float *precio, char mensaje[], char mensajeError[]) {
+		char auxPrecio[51];
+
+		printf("%s", mensaje);
+		scanf("%s", auxPrecio);
+
+		while (!(esNumericoFlotante(auxPrecio))) {
+			printf("%s", mensajeError);
+			scanf("%s", auxPrecio);
+		}
+
+		*precio = atof(auxPrecio);
+
+	}
