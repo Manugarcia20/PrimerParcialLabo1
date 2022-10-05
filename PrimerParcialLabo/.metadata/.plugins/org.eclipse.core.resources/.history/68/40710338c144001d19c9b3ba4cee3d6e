@@ -64,12 +64,13 @@ int getValidInt(char requestMessage[], char errorMessage[], int lowLimit,
 
 /**
  * \brief Solicita un string
- * \param cadena se le pasa cadena
- * \param len cantidad maxima de caracteres permitidos
+ * \param cadena
+ * \param len
  * \param mensaje Es el mensaje a ser mostrado para solicitar el dato
  * \return Retorna 1 si se pudo hacer correctamente
-
+ *
  */
+
 int PedirCadena(char cadena[],int len,char mensaje[]);
 
 ///**
@@ -78,6 +79,7 @@ int PedirCadena(char cadena[],int len,char mensaje[]);
 // * \param input Array donde se cargará el texto ingresado
 // * \return 1 si el texto contiene solo letras
 // */
+
 
 int getStringLetras(char mensaje[], char input[]);
 

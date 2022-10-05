@@ -76,29 +76,6 @@ int getValidInt(char requestMessage[],char errorMessage[], int lowLimit, int hiL
 }
 
 
-int PedirCadena(char cadena[],int len,char mensaje[])
-{
-	int retorno;
-	char buffer[1024];
-	int largoBuffer;
-
-	retorno = 0;
-
-	printf("%s",mensaje);
-	fflush(stdin);
-	scanf("%[^\n]",buffer);
-
-	largoBuffer = (int)strlen(buffer);
-
-	if(len > largoBuffer)
-	{
-		strcpy(cadena,buffer);
-		retorno = 1;
-	}
-
-
-	return retorno;
-}
 
 int getStringLetras(char mensaje[],char input[])
 {

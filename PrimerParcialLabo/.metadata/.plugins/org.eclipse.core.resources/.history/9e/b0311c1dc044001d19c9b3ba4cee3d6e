@@ -85,7 +85,7 @@ int PedirCadena(char cadena[],int len,char mensaje[])
 	retorno = 0;
 
 	printf("%s",mensaje);
-	fflush(stdin);
+	__fpurge(stdin);
 	scanf("%[^\n]",buffer);
 
 	largoBuffer = (int)strlen(buffer);

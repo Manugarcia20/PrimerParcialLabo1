@@ -75,9 +75,9 @@ int AltaLibro(eLibro libros[], int tamL, int *pId, eAutor autores[], int tamA, e
 						printf("\nCaracteres invalidos. Por favor, ingrese solo letras: ");
 					}
 
-					nuevoLibro.fecha.dia = getValidInt("\nIngrese el dia de publicacion del libro: ","Error. Ingrese solo numeros: ",1,31);
+					nuevoLibro.fecha.dia = getValidInt("\nIngrese el dia de publicacion del libro: ","Error. Ingrese solo numeros: ",1,30);
 					nuevoLibro.fecha.mes = getValidInt("\nIngrese el mes de publicacion del libro: ","Error. Ingrese solo numeros: ",1,12);
-					nuevoLibro.fecha.anio = getValidInt("\nIngrese el anio de publicacion del libro: ","Error. Ingrese solo numeros: ",1800,2022);
+					nuevoLibro.fecha.anio = getValidInt("\nIngrese el anio de publicacion del libro: ","Error. Ingrese solo numeros: ",1700,2022);
 
 				    CargarPrecio(&nuevoLibro.importe, "\nIngrese el precio del libro :  ", "\nError. No ingrese numeros negativos, simbolos ni letras ");
 

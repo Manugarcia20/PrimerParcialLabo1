@@ -79,6 +79,7 @@ int PedirCadena(char cadena[],int len,char mensaje[]);
 // * \return 1 si el texto contiene solo letras
 // */
 
+
 int getStringLetras(char mensaje[], char input[]);
 
 

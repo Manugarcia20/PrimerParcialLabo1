@@ -14,7 +14,6 @@
 #define LLENO 1
 #define VACIO 0
 #define TAM_L 10
-#define FGETS 51
 
 typedef struct{
 	int dia;

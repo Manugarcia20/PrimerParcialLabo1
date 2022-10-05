@@ -75,9 +75,9 @@ int AltaLibro(eLibro libros[], int tamL, int *pId, eAutor autores[], int tamA, e
 						printf("\nCaracteres invalidos. Por favor, ingrese solo letras: ");
 					}
 
-					nuevoLibro.fecha.dia = getValidInt("\nIngrese el dia de publicacion del libro: ","Error. Ingrese solo numeros: ",1,31);
+					nuevoLibro.fecha.dia = getValidInt("\nIngrese el dia de publicacion del libro: ","Error. Ingrese solo numeros: ",1,30);
 					nuevoLibro.fecha.mes = getValidInt("\nIngrese el mes de publicacion del libro: ","Error. Ingrese solo numeros: ",1,12);
-					nuevoLibro.fecha.anio = getValidInt("\nIngrese el anio de publicacion del libro: ","Error. Ingrese solo numeros: ",1800,2022);
+					nuevoLibro.fecha.anio = getValidInt("\nIngrese el anio de publicacion del libro: ","Error. Ingrese solo numeros: ",1700,2022);
 
 				    CargarPrecio(&nuevoLibro.importe, "\nIngrese el precio del libro :  ", "\nError. No ingrese numeros negativos, simbolos ni letras ");
 
@@ -145,14 +145,14 @@ int ModificarLibros(eLibro libros[], int tamL , int idLibroCambio, eAutor autore
 									break;
 								case 2:
 									printf("\nUsted eligio: MODIFICAR FECHA DE PUBLICACION\n");
-									libros[posLibroCambio].fecha.dia = getValidInt("\nIngrese el nuevo dia de publicacion: " , "\nError, ingrese un numero: ",1,31);
+									libros[posLibroCambio].fecha.dia = getValidInt("\nIngrese el nuevo dia de publicacion: " , "\nError, ingrese un numero: ",1,30);
 									libros[posLibroCambio].fecha.mes = getValidInt("\nIngrese el nuevo mes de publicacion: " , "\nError, ingrese un numero: ",1,12);
 									libros[posLibroCambio].fecha.anio = getValidInt("\nIngrese el nuevo anio de publicacion: " , "\nError, ingrese un numero: ",1800,2022);
 									MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 3:
 									printf("\nUsted eligio: MODIFICAR IMPORTE DEL LIBRO\n");
-									CargarPrecio(&libros[posLibroCambio].importe, "\nIngrese el nuevo importe del libro:  ", "\nError. No ingrese numeros negativos, simbolos ni letras: ");
+									CargarPrecio(&libros[posLibroCambio].importe, "\nIngrese el nuevo importe del libro:  ", "\nError. No ingrese numeros negativos, simbolos ni letras");
 									MostrarListaLibros(libros,tamL,autores,tamA, editoriales,tamE,paises,tamP);
 									break;
 								case 4:
