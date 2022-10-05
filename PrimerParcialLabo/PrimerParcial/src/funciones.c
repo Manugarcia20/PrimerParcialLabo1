@@ -80,18 +80,18 @@ int MostrarListaLibros(eLibro libros[], int tamL, eAutor autores[], int tamA, eE
 }
 
 int BuscarLibro(eLibro libros[], int tamL, int id) {
-		int posicionPasajero;
+		int posicionLibro;
 
-		posicionPasajero = -1; /*En caso de no haber espacio, lista nula o id inexistente*/
+		posicionLibro = -1; /*En caso de no haber espacio, lista nula o id inexistente*/
 
 		if (libros != NULL && tamL > 0) {
 			for (int i = 0; i < tamL; i++) {
 				if (libros[i].idLibro == id) {
-					posicionPasajero = i;
+					posicionLibro = i;
 				}
 			}
 		}
-		return posicionPasajero;
+		return posicionLibro;
 	}
 float CalcularTotalYPromedio(eLibro libros[], int tamL,float *promedio){
 	int isOk =0;
@@ -123,6 +123,7 @@ int SuperanPromedio(eLibro libros[], int tamL, float promedio){
 			}
 		}
 	printf("\nHay %d libro/s que superan el promedio ",superan);
+	isOk =1;
 
 
 	return isOk;
@@ -156,20 +157,20 @@ int OrdenarPorImporteYTitulo(eLibro libros[], int tamL, eAutor autores[], int ta
 		            for(int j=i+1; j<tamL; j++)
 		            {
 		            	   for(int i=0; i<tamL-1; i++){
-		            			            for( int j=i+1; j<tamL; j++ ){
+		         			for( int j=i+1; j<tamL; j++ ){
 		            			                //       'M' > 'F'
-		            			                if( libros[i].importe < libros[j].importe ){
-		            			                    auxLibro = libros[i];
-		            			                    libros[i] = libros[j];
-		            			                    libros[j] = auxLibro;
-		            			                }
+		            			 if( libros[i].importe < libros[j].importe ){
+		            			 			 auxLibro = libros[i];
+		            						  libros[i] = libros[j];
+		            			 			 libros[j] = auxLibro;
+		            			 }
 		            			                // 'M' < 'F'  'F' == 'F'  'M' == 'M'
-		            			                else{
-		            			                    if( libros[i].importe == libros[j].importe ){
-		            			                        if( strcmp( libros[i].titulo, libros[j].titulo ) > 0 ){
-		            			                            auxLibro = libros[i];
-		            			                            libros[i] = libros[j];
-		            			                            libros[j] = auxLibro;
+		     					 else{
+		          					if( libros[i].importe == libros[j].importe ){
+		            						 if( strcmp( libros[i].titulo, libros[j].titulo ) > 0 ){
+		            			  					 auxLibro = libros[i];
+		            			   					 libros[i] = libros[j];
+		            			  					 libros[j] = auxLibro;
 		            			                        }
 		            			                    }
 		            			                }

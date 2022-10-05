@@ -1,0 +1,93 @@
+/*
+ * libro.h
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#ifndef LIBRO_H_
+#define LIBRO_H_
+
+#include <string.h>
+#include "autor.h"
+#include "editorial.h"
+#define LLENO 1
+#define VACIO 0
+#define TAM_L 5
+
+typedef struct{
+	int dia;
+	int mes;
+	int anio;
+}eFecha;
+
+
+typedef struct{
+	int idLibro;
+	char titulo[51];
+	eFecha fecha;
+	float importe;
+	int idAutor;
+	int idEditorial;
+	int estado;
+
+}eLibro;
+
+
+/// @param libros Le paso el array de estructuras de tipo eLibro
+/// @param tam Le paso el tamanio del array
+/// @return retorna 0 si salio bien
+int InicializarLibros(eLibro libros[], int tam);
+
+
+
+/// @param libros Le paso el array de estructuras de tipo eLibro
+/// @param tam Le paso el tamanio del array
+/// @param pPosicion  Le paso el puntero pPosicion para que reciba la posicion encontrada
+/// @returnretorna 0 si salio bien
+int BuscarEspacioLibre(eLibro libros[], int tam, int *pPosicion);
+
+/// @param libros Le paso el array de estructuras de tipo eLibro
+/// @param tamL Le paso el tamanio del array libros
+/// @param pId Le paso la variable pId puntero para que reciba el valor del id autoincremental
+/// @param autores Le paso el array de estructuras de tipo eAutor
+/// @param tamA Le paso el tamanio del array autores
+/// @param paises Le paso el array de estructuras de tipo ePais
+/// @param tamP Le paso el tamanio del array paises
+/// @param editoriales Le paso el array de estructuras de tipo eEditorial
+/// @param tamE Le paso el tamanio del array editoriales
+/// @return retorna 1 si el alta se pudo hacer correctamente
+int AltaLibro(eLibro libros[], int tamL, int *pId, eAutor autores[], int tamA, ePais paises[], int tamP, eEditorial editoriales[], int tamE);
+
+
+/// @param precio Le paso la variable precio puntero para que reciba el valor del importe cargado
+/// @param mensaje Le paso el mensaje solicitando al usuario que cargue el importe
+/// @param mensajeError Le paso el mensaje de eror en caso de que haya ingresado un caracter no valido
+void CargarPrecio(float *precio, char mensaje[], char mensajeError[]);
+
+
+/// @param libros Le paso el array de estructuras de tipo eLibro
+/// @param tamL Le paso el tamanio del array libros
+/// @param idLibroCambio
+/// @param autores Le paso el array de estructuras eAutor
+/// @param tamA Le paso el tamanio del array autores
+/// @param editoriales Le paso el array de estructuras eEditorial
+/// @param tamE Le paso el tamanio del array editoriales
+/// @param paises Le paso el array de estructuras ePais
+/// @param tamP Le paso el tamanio del array paises
+/// @return retorna 1 si la modificacion se pudo hacer correctamente
+int ModificarLibros(eLibro libros[], int tamL , int idLibroCambio, eAutor autores[], int tamA, eEditorial editoriales[], int tamE,ePais paises[], int tamP);
+
+
+/// @param libros Le paso el array de estructuras eLibro
+/// @param tamL Le paso el tamanio del array libros
+/// @param idLibroBaja variable para almacenar el id que el usuario ingresa para darlo de baja
+/// @param autores Le paso el array de estructuras eAutor
+/// @param tamA Le paso el tamanio del array autores
+/// @param editoriales Le paso el array de estructuras eEditoriales
+/// @param tamE Le paso el tamanio del array editoriales
+/// @param paises Le paso el array de estructuras ePais
+/// @param tamP Le paso el tamanio del array paises
+/// @return retorna 0 si la baja se pudo hacer correctamente
+int BajaLibro(eLibro libros[], int tamL, int idLibroBaja, eAutor autores[], int tamA, eEditorial editoriales[], int tamE,ePais paises[],int tamP);
+#endif /* LIBRO_H_ */

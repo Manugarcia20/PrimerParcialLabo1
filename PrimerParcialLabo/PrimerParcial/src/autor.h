@@ -25,7 +25,17 @@ typedef struct{
 
 }eAutor;
 
-
+/// @brief Carga la descripcion de los autores con su respectivo id
+/// @param autores Le paso el array de estructuras de tipo eAutor
+/// @param tamA Le paso el tamanio del array autores
+/// @param id le paso el id con el que tiene que comparar en la condicion del if para cargar una descripcion
+/// @param descAutor le paso el array de caracteres para que en el copien una descripcion
+/// @return retorna 1 si se pudo hacer correctamente
 int CargarDescripcionAutor(eAutor autores[], int tamA, int id, char descAutor[]);
+
+/// @brief Muestra la lista de autores
+/// @param autores Le paso el array de estructuras de tipo eAutor
+/// @param tamA Le paso el tamanio del array autores
+/// @param paises Le paso el array de estructuras de tipo ePais
 void MostrarAutor(eAutor autores[], int tamA, ePais paises[]);
 #endif /* AUTOR_H_ */

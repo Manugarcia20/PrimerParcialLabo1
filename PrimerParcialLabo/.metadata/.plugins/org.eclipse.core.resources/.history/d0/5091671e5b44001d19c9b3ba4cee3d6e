@@ -1,0 +1,20 @@
+/*
+ * menu.h
+ *
+ *  Created on: 30 sep. 2022
+ *      Author: manu
+ */
+
+#ifndef MENU_H_
+#define MENU_H_
+
+/// @return retorna la opcion elegida por el usuario para el menu principal del main
+int menuOpciones();
+/// @return retorna la opcion elegida por el usuario para el sub menu de modificacion
+int subMenuModificar();
+/// @return retorna la opcion elegida por el usuario para el sub menu de los informes
+int subMenuInformes();
+/// @return retorna la opcion elegida por el usuario para el sub menu de las listas
+int subMenuListar();
+
+#endif /* MENU_H_ */

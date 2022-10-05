@@ -70,13 +70,21 @@ do{
 	switch(opcion){
 	case 1:
 		printf("\nUsted eligio: ALTA\n");
-		AltaPasajero(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E);
+		if(AltaLibro(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E) == 1){
+			printf("\nCARGA EXITOSA");
+		}else{
+			printf("NO SE PUDO HACER LA CARGA");
+		}
 		flagAlta = 1;
 		break;
 	case 2:
 		printf("\nUsted eligio: MODIFICACION\n");
 		if(flagAlta == 1){
-		ModificarLibros(libros, TAM_L , idLibroCambio, autores, TAM_A,editoriales,TAM_E, paises, TAM_P);
+		if(ModificarLibros(libros, TAM_L , idLibroCambio, autores, TAM_A,editoriales,TAM_E, paises, TAM_P) == 1){
+			printf("\nMODIFICACION EXITOSA");
+		}else{
+			printf("\nNO SE PUDO HACER LA MODIFICACION");
+		}
 		}else{
 			printf("\nNo se puede modificar un libro sin antes haber cargado uno\n");
 		}
@@ -84,7 +92,11 @@ do{
 	case 3:
 		printf("\nUsted eligio: BAJA\n");
 		if(flagAlta == 1){
-		BajaLibro(libros,TAM_L,idLibroBaja,autores, TAM_A, editoriales, TAM_E,paises,TAM_P);
+		if(BajaLibro(libros,TAM_L,idLibroBaja,autores, TAM_A, editoriales, TAM_E,paises,TAM_P) == 1){
+			printf("\nBAJA EXITOSA");
+		}else{
+			printf("\nNOSE PUDO HACER LA BAJA");
+		}
 		}else{
 			printf("\nNo se puede dar de baja un libro sin antes haber cargado uno\n");
 		}

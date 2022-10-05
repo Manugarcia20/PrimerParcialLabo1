@@ -1,0 +1,80 @@
+/*
+ * funciones.h
+ *
+ *  Created on: 1 oct. 2022
+ *      Author: manu
+ */
+
+#ifndef FUNCIONES_H_
+#define FUNCIONES_H_
+
+#include "libro.h"
+#include "autor.h"
+#include "editorial.h"
+
+
+/// @param precio Le paso la variable precio puntero para que reciba el valor del importe cargado
+/// @param mensaje Le paso el mensaje solicitando al usuario que cargue el importe
+/// @param mensajeError Le paso el mensaje de eror en caso de que haya ingresado un caracter no valido
+void CargarPrecio(float *precio, char mensaje[], char mensajeError[]);
+
+
+
+/// @param libro Le paso el array de estructuras de tipo eLibro
+/// @param autores Le paso el array de estructuras de tipo eAutor
+/// @param editoriales Le paso el array de estructuras de tipo eEditorial
+/// @param tamL
+/// @param tamA
+/// @param paises Le paso el array de estructuras de tipo ePaises
+/// @param tamP
+/// @return
+int MostrarUnLibro(eLibro libro, eAutor autores[],eEditorial editoriales[], int tamL, int tamA,ePais paises[],int tamP);
+
+
+/// @param libros
+/// @param tamL
+/// @param autores
+/// @param tamA
+/// @param editoriales
+/// @param tamE
+/// @param paises
+/// @param tamP
+/// @return
+int MostrarListaLibros(eLibro libros[], int tamL, eAutor autores[], int tamA, eEditorial editoriales[], int tamE,ePais paises[],int tamP);
+
+/// @param libros
+/// @param tamL
+/// @param id
+/// @return
+int BuscarLibro(eLibro libros[], int tamL, int id);
+
+/// @param libros
+/// @param tamL
+/// @param promedio
+/// @return
+float CalcularTotalYPromedio(eLibro libros[], int tamL, float* promedio);
+
+/// @param libros
+/// @param tamL
+/// @param promedio
+/// @return
+int SuperanPromedio(eLibro libros[], int tamL, float promedio);
+
+/// @param libros
+/// @param tamL
+/// @return
+int CantidadAnteriorFecha(eLibro libros[], int tamL);
+
+/// @param libros
+/// @param tamL
+/// @param autores
+/// @param tamA
+/// @param editoriales
+/// @param tamE
+/// @param paises
+/// @param tamP
+/// @return
+int OrdenarPorImporteYTitulo(eLibro libros[], int tamL, eAutor autores[], int tamA, eEditorial editoriales[], int tamE, ePais paises[], int tamP);
+
+
+#endif /* FUNCIONES_H_ */

@@ -22,9 +22,17 @@ typedef struct{
 	int estado;
 }eEditorial;
 
-
-
+/// @brief Muestra la lista de editoriales
+/// @param editoriales Le paso el array de estructuras de tipo eEditorial
+/// @param tamE Le paso el tamanio del array editoriales
 void MostrarEditorial(eEditorial editoriales[], int tamE);
+
+/// @brief Carga la descripcion de las editoriales con su respectivo id
+/// @param editoriales Le paso el array de estructuras de tipo eEditorial
+/// @param tamE Le paso el tamanio del array editoriales
+/// @param id le paso el id con el que tiene que comparar en la condicion del if para cargar una descripcion
+/// @param descEditorial le paso el array de caracteres para que en el copien una descripcion
+/// @return retorna 1 si se pudo hacer correctamente
 int CargarDescripcionEditorial(eEditorial editoriales[], int tamE, int id, char descEditorial[]);
 
 #endif /* EDITORIAL_H_ */

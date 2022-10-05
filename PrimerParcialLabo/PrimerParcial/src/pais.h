@@ -23,7 +23,11 @@ typedef struct{
 }ePais;
 
 
-int CargarDescripcionPais(ePais paises[], int tamP, int id, char descPais[]);
+//int CargarDescripcionPais(ePais paises[], int tamP, int id, char descPais[]);
+
+/// @brief Muestra la lista de paises
+/// @param paises Le paso el array de estructuras de tipo ePais
+/// @param tamP Le paso el tamanio del array editoriales
 void MostrarPais(ePais paises[], int tamP);
 
 #endif /* PAIS_H_ */
