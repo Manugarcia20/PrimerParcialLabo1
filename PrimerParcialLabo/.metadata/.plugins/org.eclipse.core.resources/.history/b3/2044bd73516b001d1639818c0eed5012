@@ -1,0 +1,41 @@
+
+
+
+/** \brief Carga los datos de los jugadores desde el archivo jugadores.csv (modo texto).
+ *
+ * \param path char* le paso el nombre del archivo
+ * \param pArrayListJugador LinkedList* le paso la lista de jugadores
+ * \return int devuelve 1 si salio bien
+ */
+int controller_cargarLibrosDesdeTexto(char* path , LinkedList* pArrayListLibro); ///
+
+
+int controller_listarJugadores(LinkedList* pArrayListLibro); ///
+
+/** \brief Ordenar jugadores
+ * \param pArrayListJugador LinkedList* le paso la lista de jugadores
+ * \return int  devuelve 1 si salio bien
+ */
+int controller_ordenarJugadores(LinkedList* pArrayListJugador); ///
+
+/** \brief Guarda los datos de los jugadores en el archivo jugadores.csv (modo texto).
+ * \param path char* le paso el nombre del archivo
+ * \param pArrayListSeleccion LinkedList* le paso la lista de jugadores
+ * \return int devuelve 1 si salio bien
+ */
+int controller_guardarJugadoresModoTexto(char* path , LinkedList* pArrayListJugador);///
+
+/// @brief Genera una lista de jugadores convocados por confederacion en binario
+/// @param path le paso el nombre del archivo
+/// @param pArrayListJugador le paso la lista de jugadores
+/// @param pArrayListSeleccion le paso la lista de selecciones
+/// @return devuelve 1 si salio bien
+int controller_generarJugadoresModoBinario(char* path,LinkedList* pArrayListJugador,LinkedList* pArrayListSeleccion);///
+
+
+
+
+
+
+
+

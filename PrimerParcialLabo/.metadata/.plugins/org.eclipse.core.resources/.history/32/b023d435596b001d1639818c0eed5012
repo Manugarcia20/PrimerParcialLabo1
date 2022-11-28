@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "Libro.h"
+#include "LinkedList.h"
+
+
+/** \brief Parsea los datos de los jugadores desde el archivo jugadores.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListJugador LinkedList*
+ * \return int
+ */
+int parser_LibroFromText(FILE* pFile , LinkedList* pArrayListLibro)
+{
+		char id[30];
+		char titulo[100];
+		char importe[50];
+		char idTipo[30];
+
+		int retorno = -1;
+		int retornoFscanf;
+
+
+		eLibro* pLibro;
+
+		if(pArrayListLibro != NULL && pFile != NULL)
+		{
+			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,titulo,importe,idTipo); //lectura fantasma
+
+			while(feof(pFile) == 0 ){
+				retornoFscanf = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,titulo,importe,idTipo);
+				if(retornoFscanf == 4){
+
+//					printf("%s\n",id);
+					pLibro = libro_newParametros(id,titulo,importe,idTipo);
+
+					//printf("\n%s   %s   %s   %s   %s   %s ",id,nombreCompleto,edad,posicion,nacionalidad,idSeleccion );
+					ll_add(pArrayListLibro,pLibro);
+				}
+			}
+
+		retorno = 1;
+		}else
+		{
+			printf("\nLa memoria esta llena");
+
+		}
+
+	    return retorno;
+}
+
+
+
+
+
+

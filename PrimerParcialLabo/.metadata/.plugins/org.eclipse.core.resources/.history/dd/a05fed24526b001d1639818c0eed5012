@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "LinkedList.h"
+#include "Jugador.h"
+
+
+/** \brief Parsea los datos de los jugadores desde el archivo jugadores.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListJugador LinkedList*
+ * \return int
+ */
+int parser_LibroFromText(FILE* pFile , LinkedList* pArrayListLibro)
+{
+		char id[30];
+		char titulo[100];
+		char importe[50];
+		char idTipo[30];
+
+		int retorno = -1;
+		int retornoFscanf;
+
+
+		eLibro* pLibro;
+
+		if(pArrayListLibro != NULL && pFile != NULL)
+		{
+			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,titulo,importe,idTipo); //lectura fantasma
+
+			while(feof(pFile) == 0 ){
+				retornoFscanf = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",id,nombreCompleto,edad,posicion,nacionalidad,idSeleccion);
+				if(retornoFscanf == 6){
+
+//					printf("%s\n",id);
+					pLibro = jug_newParametros(id,nombreCompleto,edad,posicion,nacionalidad,idSeleccion);
+
+					//printf("\n%s   %s   %s   %s   %s   %s ",id,nombreCompleto,edad,posicion,nacionalidad,idSeleccion );
+					ll_add(pArrayListJugador,pJugador);
+				}
+			}
+
+		retorno = 1;
+		}else
+		{
+			printf("\nLa memoria esta llena");
+
+		}
+
+	    return retorno;
+}
+
+/** \brief Parsea los datos de los jugadores desde el archivo binario.
+ *
+ * \param path char*
+ * \param pArrayListJugador LinkedList*
+ * \return int
+ *
+ */
+int parser_JugadorFromBinary(FILE* pFile , LinkedList* pArrayListJugador)
+{
+	int retorno = -1;
+
+	Jugador* pJugador = NULL;
+
+		if(pFile != NULL && pArrayListJugador != NULL){
+
+			while(feof(pFile) == 0){
+				pJugador = jug_new();
+				fread(pJugador,sizeof(Jugador),1,pFile);
+				if(feof(pFile)){
+					free(pJugador);
+					break;
+				}
+				ll_add(pArrayListJugador,pJugador);
+				retorno = 0;
+			}
+			fclose(pFile);
+		}
+return retorno;
+}
+
+
+
+

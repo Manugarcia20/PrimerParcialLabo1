@@ -8,9 +8,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include src/.metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 -include src/subdir.mk
--include objects.mk
-
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
@@ -39,7 +38,7 @@ all: main-build
 main-build: PrimerParcial
 
 # Tool invocations
-PrimerParcial: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+PrimerParcial: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MacOS X C Linker'
 	gcc  -o "PrimerParcial" $(OBJS) $(USER_OBJS) $(LIBS)

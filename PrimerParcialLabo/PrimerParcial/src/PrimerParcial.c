@@ -15,10 +15,8 @@
 #include "menu.h"
 #include "input.h"
 #include "funciones.h"
-#include "editorial.h"
-#include "pais.h"
-#include "autor.h"
 #include "libro.h"
+
 
 
 
@@ -61,29 +59,37 @@ int main(void) {
 			{10,"POE",3,LLENO},
 	};
 
+	eGenero generos[TAM_G] = {
+			{1,"NARRATIVO",LLENO},
+			{2,"LIRICO",LLENO},
+			{3,"DRAMATICO",LLENO},
+			{4,"DIDACTICO",LLENO},
+			{5,"NOVELA",LLENO}
+		};
+
 	eLibro libros[TAM_L];
 
-	InicializarLibros(libros,TAM_L);
+	inicializarLibros(libros,TAM_L);
 
 do{
 	opcion = menuOpciones();
 	switch(opcion){
 	case 1:
 		printf("\nUsted eligio: ALTA\n");
-		if(AltaLibro(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E) == 1){
-			printf("\nCARGA EXITOSA");
+		if(altaLibro(libros, TAM_L, &pId , autores, TAM_A, paises, TAM_P, editoriales, TAM_E, generos, TAM_G) == 1){
+			printf("\nCARGA EXITOSA\n");
 		}else{
-			printf("NO SE PUDO HACER LA CARGA");
+			printf("NO SE PUDO HACER LA CARGA\n");
 		}
 		flagAlta = 1;
 		break;
 	case 2:
 		printf("\nUsted eligio: MODIFICACION\n");
 		if(flagAlta == 1){
-		if(ModificarLibros(libros, TAM_L , idLibroCambio, autores, TAM_A,editoriales,TAM_E, paises, TAM_P) == 1){
-			printf("\nMODIFICACION EXITOSA");
+		if(modificarLibros(libros, TAM_L , idLibroCambio, autores, TAM_A,editoriales,TAM_E, paises, TAM_P, generos, TAM_G) == 1){
+			printf("\nMODIFICACION EXITOSA\n");
 		}else{
-			printf("\nNO SE PUDO HACER LA MODIFICACION");
+			printf("\nNO SE PUDO HACER LA MODIFICACION\n");
 		}
 		}else{
 			printf("\nNo se puede modificar un libro sin antes haber cargado uno\n");
@@ -92,10 +98,10 @@ do{
 	case 3:
 		printf("\nUsted eligio: BAJA\n");
 		if(flagAlta == 1){
-		if(BajaLibro(libros,TAM_L,idLibroBaja,autores, TAM_A, editoriales, TAM_E,paises,TAM_P) == 1){
+		if(bajaLibro(libros,TAM_L,idLibroBaja,autores, TAM_A, editoriales, TAM_E,paises,TAM_P, generos,TAM_G) == 1){
 			printf("\nBAJA EXITOSA");
 		}else{
-			printf("\nNOSE PUDO HACER LA BAJA");
+			printf("\nNOSE PUDO HACER LA BAJA\n");
 		}
 		}else{
 			printf("\nNo se puede dar de baja un libro sin antes haber cargado uno\n");
@@ -110,12 +116,12 @@ do{
 		switch(informes){
 		case 1:
 			printf("\nUsted eligio: Informar total y promedio de los importes, y cuántos libros superan ese promedio.\n");
-			CalcularTotalYPromedio(libros,TAM_L,&promedio);
-			SuperanPromedio(libros,TAM_L,promedio);
+			calcularTotalYPromedio(libros,TAM_L,&promedio);
+			superanPromedio(libros,TAM_L,promedio);
 			break;
 		case 2:
 			printf("\nUsted eligio: Informar Cantidad de libros cuya fecha de publicación es anterior a 01/01/2000\n");
-			CantidadAnteriorFecha(libros,TAM_L);
+			cantidadAnteriorFecha(libros,TAM_L);
 			break;
 		case 3:
 			printf("\nUsted eligio: SALIR\n");
@@ -135,30 +141,41 @@ do{
 			switch(listar){
 		case 1:
 			printf("\nUsted eligio: Listar editoriales\n");
-			MostrarEditorial(editoriales, TAM_E);
+			mostrarEditorial(editoriales, TAM_E);
 			break;
 		case 2:
 			printf("\nUsted eligio: Listar paises\n");
-			MostrarPais(paises, TAM_P);
+			mostrarPais(paises, TAM_P);
 			break;
 		case 3:
 			printf("\nUsted eligio: Listar autores\n");
-			 MostrarAutor(autores,TAM_A,paises);
+			mostrarAutor(autores,TAM_A,paises);
 			break;
 		case 4:
-			printf("\nUsted eligio: Listar libros\n");
-			MostrarListaLibros(libros,TAM_L,autores, TAM_A, editoriales,TAM_E,paises, TAM_P);
+			printf("\nUsted eligio: Listar generos\n");
+			mostrarGenero(generos,TAM_G);
 			break;
 		case 5:
-			printf("\nUsted eligio: Listar libros ordenados por importe (descendentemente) y titulo (ascendentemente)\n");
-			OrdenarPorImporteYTitulo(libros,TAM_L,autores,TAM_A,editoriales,TAM_E,paises,TAM_P);
+			printf("\nUsted eligio: Listar libros\n");
+			mostrarListaLibros(libros,TAM_L,autores, TAM_A, editoriales,TAM_E,paises, TAM_P, generos, TAM_G);
 			break;
 		case 6:
+			printf("\nUsted eligio: Listar libros ordenados por importe (descendentemente) y titulo (ascendentemente)\n");
+			ordenarPorImporteYTitulo(libros,TAM_L,autores,TAM_A,editoriales,TAM_E,paises,TAM_P, generos, TAM_G);
+			break;
+		case 7:
+			printf("\nUsted eligio: Listar libros cuyo genero no sean novela\n");
+			librosDistintoANovela(libros,TAM_L,autores,TAM_A,editoriales,TAM_E,paises,TAM_P,generos,TAM_G);
+			break;
+		case 8:
+			printf("\nUsted eligio: Listar todos los libros de autores argentinos que correspondan a una editorial determinada\n");
+		    listarLibrosArgentinosDeterminados(libros,TAM_L,autores,TAM_A,editoriales,TAM_E,paises,TAM_P,generos,TAM_G);
+			break;
+		case 9:
 			printf("\nUsted eligio: SALIR\n");
 			break;
-
 			}
-		}while(listar != 6);
+		}while(listar != 9);
 		}else{
 			printf("\nNo se puede listar nada de algun libro sin antes haber cargado uno\n");
 		}

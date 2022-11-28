@@ -1,0 +1,10 @@
+03:31:35 **** Build of configuration Debug for project TP3 ****
+make all 
+Building target: TP3
+Invoking: MacOS X C Linker
+gcc  -o "TP3"  ./Controller.o ./Jugador.o ./Seleccion.o ./input.o ./main.o ./menu.o ./parser.o   /Users/manu/Desktop/Tps_laboratorio_1/TP_03/LinkedList.a
+Finished building target: TP3
+ 
+
+03:31:36 Build Finished. 0 errors, 0 warnings. (took 1s.28ms)
+

@@ -1,0 +1,16 @@
+
+#ifndef PARSER_H_
+#define PARSER_H_
+
+#include "LinkedList.h"
+
+/// @param pFile le paso el puntero a archivo para que lo use para abrirlo
+/// @param pArrayListJugador le paso la lista de jugadores de tipo linkedlist
+/// @return retorna 1 si salio bien
+int parser_LibroFromText(FILE* pFile , LinkedList* pArrayListLibro);
+
+
+
+
+
+#endif /* PARSER_H_ */
